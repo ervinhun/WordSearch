@@ -12,7 +12,7 @@
    <children>
       <TextField fx:id="txtSearch" layoutX="50.0" layoutY="14.0" prefWidth="381.0" promptText="Search field..." disable="true"/>
       <Button fx:id="btnSearch" layoutX="463.0" layoutY="13.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0" text="Search" onAction="#search" disable="true" />
-            <ListView fx:id="lstWords" layoutX="14.0" layoutY="87.0" prefHeight="533.0" prefWidth="226.0" />
+            <ListView fx:id="lstWords" layoutX="14.0" layoutY="87.0" prefHeight="538.0" prefWidth="226.0" />
       <Label layoutX="113.0" layoutY="62.0" text="Words" textAlignment="CENTER">
        <font>
            <Font name="System Bold" size="12.0" />
@@ -32,7 +32,7 @@
           </font>
       </Label>
             <ListView fx:id="lstHistory" layoutX="260.0" layoutY="322.0" prefHeight="270.0" prefWidth="423.0" />
-      <Button fx:id="btnClearHist" layoutX="260.0" layoutY="596.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="423.0" text="Clear search history" onAction="#clearHistory" />
+      <Button fx:id="btnClearHist" layoutX="260.0" layoutY="596.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="423.0" text="Clear search history" onAction="#clearHistory" disable="true" />
       <Label layoutX="14.0" layoutY="643.0" text="Total no of Words:">
          <font>
             <Font size="14.0" />

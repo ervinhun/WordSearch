@@ -63,6 +63,7 @@ public class WordSearchController {
         btnLoad.setVisible(false);
         btnSearch.setDisable(false);
         txtSearch.setDisable(false);
+        btnClearHist.setDisable(false);
         //lstWords.setPrefHeight(getData.returnSizeOfWords()*12);
     }
 
