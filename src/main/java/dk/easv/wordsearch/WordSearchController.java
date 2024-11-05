@@ -1,6 +1,7 @@
 package dk.easv.wordsearch;
 
 import dk.easv.wordsearch.bll.GetData;
+import dk.easv.wordsearch.bll.SearchResults;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,26 +46,58 @@ public class WordSearchController {
     ObservableList<String> wordsObservableList;
     ObservableList<String> startsWithAObservableList;
     ObservableList<String> startsWithNObservableList;
+    ObservableList<String> historyObservableList;
+    GetData getData;
 
 
     public WordSearchController() {
     }
 
-    @FXML
-    private void setBtnSearch(ActionEvent event) {
-        String search = txtSearch.getText();
-        if (search.equals("")) {
 
-        }
-    }
     @FXML
     private void loadInitial(ActionEvent event) {
+        getData = new GetData();
         fillInWords();
+        loadHistory();
         btnLoad.setVisible(false);
+        btnSearch.setDisable(false);
+    }
+
+    @FXML
+    private void loadHistory() {
+        List<String> data = getData.returnData(getData.getHistoryFileName());
+        historyObservableList = FXCollections.observableList(data);
+        lstHistory.setItems(historyObservableList);
+    }
+
+    @FXML
+    private void clearHistory(ActionEvent event) throws IOException {
+        if (getData.clearHistory())
+            historyObservableList.clear();
+    }
+    @FXML
+    private void search(ActionEvent event) {
+        int index = -1;
+        SearchResults result;
+        //GetData getData = new GetData();
+        if(!txtSearch.getText().equals("")) {
+            index = getData.FindWord(txtSearch.getText());
+        }
+        if (index != -1) {
+            result = new SearchResults(txtSearch.getText(), true);
+            lstWords.getSelectionModel().select(index);
+            lstWords.scrollTo(index);
+            lblSearchRes.setText(result.lblIfFound());
+            txtSearch.setText("");
+        }
+        else
+            result = new SearchResults(txtSearch.getText(), false);
+        getData.AddToHistory(result);
+        historyObservableList.add(result.toString());
     }
 
     private void fillInWords() {
-        GetData getData = new GetData();
+        //GetData getData = new GetData();
         List<String> data = getData.getInitialWords();
         wordsObservableList = FXCollections.observableArrayList(data);
         lstWords.setItems(wordsObservableList);
@@ -74,29 +108,6 @@ public class WordSearchController {
         tmp = data.stream().filter(word -> word.startsWith("n")).toList();
         startsWithNObservableList = FXCollections.observableArrayList(tmp);
         lstWordB.setItems(startsWithNObservableList);
-
-    }
-
-
-    private void startsWithLetter (Character c) {
-        if (Character.isLetter(c)) {
-            GetData getData = new GetData();
-
-            List<String> wordsStartingWithA = getData.getInitialWords().stream()
-                    .filter(word -> word.startsWith("A"))
-                    .toList();
-            startsWithAObservableList = FXCollections.observableArrayList(wordsStartingWithA);
-            lstWordA.setItems(startsWithAObservableList);
-        }
-        else {
-            GetData getData = new GetData();
-
-            List<String> wordsStartingWithN = getData.getInitialWords().stream()
-                    .filter(word -> word.startsWith("A"))
-                    .toList();
-            startsWithNObservableList = FXCollections.observableArrayList(wordsStartingWithN);
-            lstWordB.setItems(startsWithNObservableList);
-        }
     }
 
 

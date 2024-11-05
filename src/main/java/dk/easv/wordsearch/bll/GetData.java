@@ -2,6 +2,7 @@ package dk.easv.wordsearch.bll;
 
 import dk.easv.wordsearch.data.DataAccess;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,13 +29,14 @@ public class GetData {
         DataAccess da = new DataAccess();
 
         lisOfWords = da.ReadFile(da.getFILENAME());
+        System.out.println("getInitialWords: " + lisOfWords.size());
         if(lisOfWords != null && !lisOfWords.isEmpty()) {
             return lisOfWords;
         }
         return null;
     }
 
-    private void AddToHistory (SearchResults listToSave) {
+    public void AddToHistory (SearchResults listToSave) {
         DataAccess dataAccess = new DataAccess();
         String fileName = dataAccess.getHISTORY_FILENAME();
         /**if (listToSave != null)
@@ -44,5 +46,26 @@ public class GetData {
             System.out.println("Data has been saved to " + fileName);
         else
             System.out.println("ERROR during saving the data");
+    }
+
+    public int FindWord (String word) {
+        System.out.println("Findword word: " + word + " " + lisOfWords.size());
+        int index = -1;
+        if (lisOfWords != null && !lisOfWords.isEmpty() && lisOfWords.contains(word.toLowerCase()))
+            index = lisOfWords.indexOf(word);
+        System.out.println("Findword index: " + index);
+        return index;
+    }
+
+    public String getHistoryFileName() {
+        DataAccess da = new DataAccess();
+        return da.getHISTORY_FILENAME();
+    }
+
+    public boolean clearHistory() throws IOException {
+        DataAccess da = new DataAccess();
+        if (da.DeleteFile(da.getHISTORY_FILENAME()))
+            return true;
+        return false;
     }
 }

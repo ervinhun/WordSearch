@@ -10,6 +10,11 @@ public class DataAccess {
     private final String FILENAME = "brit";
     private final String HISTORY_FILENAME = "history";
 
+    public DataAccess() {
+        CreateFile(FILENAME);
+        CreateFile(HISTORY_FILENAME);
+    }
+
 
     public boolean CreateFile(String fileName) {
         if (fileName == null || fileName.isEmpty())
@@ -19,8 +24,6 @@ public class DataAccess {
         if (myDir.mkdir()) {
             System.out.println(PATH + " Directory created");
         }
-        else
-            System.out.println("Directory already exists");
 
         if (myFile.exists()) {
             System.out.println("File already exists");
@@ -41,12 +44,18 @@ public class DataAccess {
     }
 
 
-    public boolean DeleteFile(String fileName) {
+    public boolean DeleteFile(String fileName) throws IOException {
         File myDir = new File(PATH);
-        File myFile = new File(PATH + fileName + "txt");
+        File myFile = new File(PATH + fileName + ".txt");
         if (myDir.exists()) {
             if (myFile.delete()) {
                 System.out.println(fileName + ".txt File has been deleted");
+                try{
+                    myFile.createNewFile();
+                }
+                catch(IOException e){
+                    System.out.println(fileName + ".txt File could not be created");
+                }
                 return true;
             }
             else {
