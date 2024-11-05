@@ -19,8 +19,8 @@
        </font>
       </Label>
 
-            <ListView fx:id="lstWordA" layoutX="263.0" layoutY="87.0" prefWidth="180.0" prefHeight="200" />
-            <ListView fx:id="lstWordB" layoutX="486.0" layoutY="87.0" prefWidth="180" prefHeight="200.0" />
+            <ListView fx:id="lstWordA" layoutX="260.0" layoutY="87.0" prefWidth="190.0" prefHeight="220.0" />
+            <ListView fx:id="lstWordB" layoutX="490.0" layoutY="87.0" prefWidth="190.0" prefHeight="220.0" />
       <Label fx:id="lblWordA" layoutX="286.0" layoutY="62.0" text="Words beginning with A" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
