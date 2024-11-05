@@ -75,8 +75,8 @@ public class DataAccess {
                 throw new RuntimeException(e);
             }
             try {
-                fw.write("\n");
                 fw.write(s);
+                fw.write("\n");
                 fw.flush();
                 fw.close();
                 return true;

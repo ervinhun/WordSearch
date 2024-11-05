@@ -29,7 +29,6 @@ public class GetData {
         DataAccess da = new DataAccess();
 
         lisOfWords = da.ReadFile(da.getFILENAME());
-        System.out.println("getInitialWords: " + lisOfWords.size());
         if(lisOfWords != null && !lisOfWords.isEmpty()) {
             return lisOfWords;
         }
@@ -72,5 +71,9 @@ public class GetData {
     public List<String> startingWithLetter (String c) {
         String finalC = c.substring(0).toLowerCase();
         return lisOfWords.stream().filter(word -> word.startsWith(finalC)).toList();
+    }
+
+    public int returnSizeOfWords() {
+        return lisOfWords.size();
     }
 }

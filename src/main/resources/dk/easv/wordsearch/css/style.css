@@ -1,0 +1,68 @@
+/* Root style for the entire application window */
+.root {
+    -fx-background-color: #e6e6e6; /* Light gray background */
+    -fx-padding: 10;
+    -fx-font-family: "Arial";
+}
+
+/* Text field styling for search bar */
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-padding: 3px;
+    -fx-font-size: 14px;
+}
+
+/* Button styling for the Search and Clear History buttons */
+.button {
+    -fx-background-color: #e6e6e6; /* Light gray */
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-padding: 5px 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+}
+
+.button:hover {
+    -fx-background-color: #c0c0c0; /* Slightly darker gray on hover */
+}
+
+/* Label styling for word count and search result messages */
+.label {
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+}
+
+/* ListView styling for Words and other lists */
+.list-view {
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-padding: 2px;
+    -fx-font-size: 12px;
+    -fx-control-inner-background: white;
+}
+
+.list-view .list-cell {
+    -fx-padding: 2px 4px;
+    -fx-font-size: 12px;
+}
+
+/* ScrollPane styling */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+
+/* Layout for search results text area */
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+    -fx-font-size: 12px;
+}

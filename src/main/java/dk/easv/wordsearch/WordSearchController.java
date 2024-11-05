@@ -2,6 +2,7 @@ package dk.easv.wordsearch;
 
 import dk.easv.wordsearch.bll.GetData;
 import dk.easv.wordsearch.bll.SearchResults;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -62,6 +63,7 @@ public class WordSearchController {
         btnLoad.setVisible(false);
         btnSearch.setDisable(false);
         txtSearch.setDisable(false);
+        //lstWords.setPrefHeight(getData.returnSizeOfWords()*12);
     }
 
     @FXML
@@ -87,12 +89,12 @@ public class WordSearchController {
         if (index != -1) {
             result = new SearchResults(txtSearch.getText(), true);
             lstWords.getSelectionModel().select(index);
-            lstWords.scrollTo(index-2);
-            txtSearch.setText("");
+            lstWords.scrollTo(index);
         }
         else
             result = new SearchResults(txtSearch.getText(), false);
 
+        txtSearch.setText("");
         lblSearchRes.setText(result.lblIfFound());
         getData.AddToHistory(result);
         historyObservableList.add(result.toString());
@@ -100,8 +102,7 @@ public class WordSearchController {
 
     private void fillInWords() {
         //GetData getData = new GetData();
-        List<String> data = getData.getInitialWords();
-        wordsObservableList = FXCollections.observableArrayList(data);
+        wordsObservableList = FXCollections.observableArrayList(getData.getInitialWords());
         lstWords.setItems(wordsObservableList);
         lblTotalWords.setText(wordsObservableList.size() + "");
         //List<String> tmp = data.stream().filter(word -> word.startsWith("a")).toList();

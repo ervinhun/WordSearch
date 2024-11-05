@@ -8,30 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.wordsearch.WordSearchController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.wordsearch.WordSearchController" stylesheets="@css/style.css">
    <children>
       <TextField fx:id="txtSearch" layoutX="50.0" layoutY="14.0" prefWidth="381.0" promptText="Search field..." disable="true"/>
       <Button fx:id="btnSearch" layoutX="463.0" layoutY="13.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0" text="Search" onAction="#search" disable="true" />
-      <ScrollPane layoutX="14.0" layoutY="87.0" prefHeight="533.0" prefWidth="226.0">
-        <content>
-            <ListView fx:id="lstWords" prefHeight="534.0" prefWidth="226.0" />
-        </content>
-      </ScrollPane>
+            <ListView fx:id="lstWords" layoutX="14.0" layoutY="87.0" prefHeight="533.0" prefWidth="226.0" />
       <Label layoutX="113.0" layoutY="62.0" text="Words" textAlignment="CENTER">
        <font>
            <Font name="System Bold" size="12.0" />
        </font>
       </Label>
-      <ScrollPane layoutX="263.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0">
-        <content>
-            <ListView fx:id="lstWordA" prefHeight="200.0" prefWidth="200.0" />
-        </content>
-      </ScrollPane>
-      <ScrollPane layoutX="486.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0">
-        <content>
-            <ListView fx:id="lstWordB" prefHeight="200.0" prefWidth="200.0" />
-        </content>
-      </ScrollPane>
+
+            <ListView fx:id="lstWordA" layoutX="263.0" layoutY="87.0" prefWidth="180.0" prefHeight="200" />
+            <ListView fx:id="lstWordB" layoutX="486.0" layoutY="87.0" prefWidth="180" prefHeight="200.0" />
       <Label fx:id="lblWordA" layoutX="286.0" layoutY="62.0" text="Words beginning with A" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -42,11 +31,7 @@
               <Font name="System Bold" size="12.0" />
           </font>
       </Label>
-      <ScrollPane layoutX="263.0" layoutY="322.0" prefHeight="265.0" prefWidth="423.0">
-        <content>
-            <ListView fx:id="lstHistory" prefHeight="263.0" prefWidth="419.0" />
-        </content>
-      </ScrollPane>
+            <ListView fx:id="lstHistory" layoutX="260.0" layoutY="322.0" prefHeight="270.0" prefWidth="423.0" />
       <Button fx:id="btnClearHist" layoutX="260.0" layoutY="596.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="423.0" text="Clear search history" onAction="#clearHistory" />
       <Label layoutX="14.0" layoutY="643.0" text="Total no of Words:">
          <font>
@@ -63,7 +48,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblSearchRes" layoutX="346.0" layoutY="646.0" text="Not found" />
+      <Label fx:id="lblSearchRes" layoutX="346.0" layoutY="645.0" text="Not found" />
       <Button fx:id="btnLoad" layoutX="622.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadInitial" text="Load" />
    </children>
 </AnchorPane>
