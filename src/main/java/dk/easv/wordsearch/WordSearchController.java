@@ -61,6 +61,7 @@ public class WordSearchController {
         loadHistory();
         btnLoad.setVisible(false);
         btnSearch.setDisable(false);
+        txtSearch.setDisable(false);
     }
 
     @FXML
@@ -86,12 +87,13 @@ public class WordSearchController {
         if (index != -1) {
             result = new SearchResults(txtSearch.getText(), true);
             lstWords.getSelectionModel().select(index);
-            lstWords.scrollTo(index);
-            lblSearchRes.setText(result.lblIfFound());
+            lstWords.scrollTo(index-2);
             txtSearch.setText("");
         }
         else
             result = new SearchResults(txtSearch.getText(), false);
+
+        lblSearchRes.setText(result.lblIfFound());
         getData.AddToHistory(result);
         historyObservableList.add(result.toString());
     }
@@ -102,11 +104,11 @@ public class WordSearchController {
         wordsObservableList = FXCollections.observableArrayList(data);
         lstWords.setItems(wordsObservableList);
         lblTotalWords.setText(wordsObservableList.size() + "");
-        List<String> tmp = data.stream().filter(word -> word.startsWith("a")).toList();
-        startsWithAObservableList = FXCollections.observableArrayList(tmp);
+        //List<String> tmp = data.stream().filter(word -> word.startsWith("a")).toList();
+        startsWithAObservableList = FXCollections.observableArrayList(getData.startingWithLetter("a"));
         lstWordA.setItems(startsWithAObservableList);
-        tmp = data.stream().filter(word -> word.startsWith("n")).toList();
-        startsWithNObservableList = FXCollections.observableArrayList(tmp);
+        //tmp = data.stream().filter(word -> word.startsWith("n")).toList();
+        startsWithNObservableList = FXCollections.observableArrayList(getData.startingWithLetter("n"));
         lstWordB.setItems(startsWithNObservableList);
     }
 

@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.wordsearch.WordSearchController">
    <children>
-      <TextField fx:id="txtSearch" layoutX="50.0" layoutY="14.0" prefWidth="381.0" promptText="Search field..." />
+      <TextField fx:id="txtSearch" layoutX="50.0" layoutY="14.0" prefWidth="381.0" promptText="Search field..." disable="true"/>
       <Button fx:id="btnSearch" layoutX="463.0" layoutY="13.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0" text="Search" onAction="#search" disable="true" />
       <ScrollPane layoutX="14.0" layoutY="87.0" prefHeight="533.0" prefWidth="226.0">
         <content>

@@ -30,6 +30,6 @@ public class SearchResults {
 
     @Override
     public String toString() {
-        return "Search for [" + word + ", " + (found ? " has found result" : " has not found result") + "]";
+        return "Search for [" + word + " " + (found ? " has found result" : " has not found result") + "]";
     }
 }

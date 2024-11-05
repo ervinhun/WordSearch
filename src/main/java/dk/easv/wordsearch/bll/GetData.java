@@ -68,4 +68,9 @@ public class GetData {
             return true;
         return false;
     }
+
+    public List<String> startingWithLetter (String c) {
+        String finalC = c.substring(0).toLowerCase();
+        return lisOfWords.stream().filter(word -> word.startsWith(finalC)).toList();
+    }
 }
